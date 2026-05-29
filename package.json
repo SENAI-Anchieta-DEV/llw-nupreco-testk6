@@ -13,6 +13,11 @@
     "smoke:contas": "k6 run tests/contas/01-smoke-criar-conta.js",
     "load:contas": "k6 run tests/contas/02-load-listar-contas.js",
     "stress:contas": "k6 run tests/contas/03-stress-contas.js",
-    "crud:contas": "k6 run tests/contas/04-fluxo-crud-contas.js"
+    "crud:contas": "k6 run tests/contas/04-fluxo-crud-contas.js",
+
+    "smoke:estoque": "k6 run tests/estoque/01-smoke-listar-estoque.js",
+    "load:estoque": "k6 run tests/estoque/02-load-listar-estoque.js",
+    "stress:estoque": "k6 run tests/estoque/03-stress-estoque.js",
+    "fluxo:estoque": "k6 run tests/estoque/04-fluxo-movimentacao-estoque.js"
   }
 }

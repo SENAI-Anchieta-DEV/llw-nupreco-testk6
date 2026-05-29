@@ -43,3 +43,17 @@ export function contaAtualizadaPayload() {
     dataVencimento: '2026-12-31'
   };
 }
+
+export function estoquePayload() {
+  return {
+    produtoId: '7891234567890',
+    quantidade: 5
+  };
+}
+
+export function estoqueRemocaoPayload() {
+  return {
+    produtoId: '7891234567890',
+    quantidade: 2
+  };
+}
