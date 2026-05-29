@@ -17,7 +17,7 @@ export function login() {
     headers: {
       'Content-Type': 'application/json'
     },
-    timeout: '30s'
+    timeout: '60s'
   };
 
   const response = http.post(`${BASE_URL}/auth/login`, payload, params);
@@ -25,14 +25,28 @@ export function login() {
   console.log(`LOGIN STATUS: ${response.status}`);
   console.log(`LOGIN BODY: ${response.body}`);
 
+  if (!response.body) {
+    fail('Falha no login: resposta sem body. Verifique se a API está acordada e respondendo.');
+  }
+
+  let body;
+
+  try {
+    body = response.json();
+  } catch (error) {
+    fail(`Falha ao converter resposta do login em JSON. Body recebido: ${response.body}`);
+  }
+
+  const token = body?.data?.token;
+
   const ok = check(response, {
     'login retornou status 200': (r) => r.status === 200,
-    'login retornou data.token': (r) => !!r.json('data.token')
+    'login retornou data.token': () => !!token
   });
 
   if (!ok) {
     fail('Falha no login. Verifique ADMIN_NOME, ADMIN_SENHA e resposta da API.');
   }
 
-  return response.json('data.token');
+  return token;
 }
