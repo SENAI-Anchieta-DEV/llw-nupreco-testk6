@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "smoke:login": "k6 run tests/auth/01-smoke-login.js",
+
+    "smoke:produtos": "k6 run tests/produtos/01-smoke-criar-produto.js",
+    "load:produtos": "k6 run tests/produtos/02-load-listar-produtos.js",
+    "stress:produtos": "k6 run tests/produtos/03-stress-produtos.js",
+    "crud:produtos": "k6 run tests/produtos/04-fluxo-crud-produtos.js"
+  }
+}
